@@ -124,8 +124,7 @@ public final class AdManager {
         task.resume()
     }
     
-    public func fetchAd(appsId: String,
-                                idfa: String,
+    public func fetchAd(idfa: String,
                                 extraInfo: String? = "",
                                 completion: @escaping (String) -> Void) {
         var resultedString = UserDefaults.standard.string(forKey: "advert")
@@ -138,14 +137,13 @@ public final class AdManager {
         let user = "blhaga"
         
         self.makeRequest(url: source) { result in
-            let gaid = appsId
             let idfa = idfa
             switch result {
             case .success(let data):
                 let responseString = String(data: data,
                                             encoding: .utf8) ?? ""
                 if responseString.contains(user) {
-                    let link = "\(responseString)?idfa=\(idfa)&gaid=\(gaid)\(String(describing: extraInfo))"
+                    let link = "\(responseString)?idfa=\(idfa)\(String(describing: extraInfo))"
                     resultedString = link
                     UserDefaults.standard.setValue(link,
                                                    forKey: "advert")
@@ -162,11 +160,10 @@ public final class AdManager {
     }
     
     public func fetchAndPresentAd(from viewController: UIViewController,
-                                  appsId: String,
                                   idfa: String,
                                   extraIfo: String? = "",
                                   completion: @escaping (Bool) -> Void) {
-        fetchAd(appsId: appsId, idfa: idfa, extraInfo: extraIfo) { [weak self] urlString in
+        fetchAd(idfa: idfa, extraInfo: extraIfo) { [weak self] urlString in
             
             if !urlString.isEmpty, let url = URL(string: urlString) {
                 DispatchQueue.main.async {
