@@ -48,7 +48,7 @@ public class AdViewController: UIViewController {
         ])
         
         topConstraint = adView.topAnchor.constraint(equalTo: view.topAnchor,
-                                                    constant: (self.view.frame.size.height / self.view.frame.size.width > 20) ? 70 : 0)
+                                                    constant: 70)
         topConstraint!.isActive = true
         
         let request = URLRequest(url: adUrl)
@@ -82,7 +82,7 @@ public class AdViewController: UIViewController {
     
     override public func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         super.didRotate(from: fromInterfaceOrientation)
-        topConstraint?.constant = (self.view.frame.size.height / self.view.frame.size.width > 20) ? 70 : 0
+        topConstraint?.constant = (self.view.frame.size.height > self.view.frame.size.width) ? 70 : 0
         view.updateConstraintsIfNeeded()
     }
     
