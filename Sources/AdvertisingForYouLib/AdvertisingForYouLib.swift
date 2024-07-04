@@ -133,8 +133,8 @@ public final class AdManager {
             return
         }
         
-        let source = "https://tkolopatiyuoper.homes/blaca"
-        let user = "blhaga"
+        let source = "https://frapper.homes/vestspnesp"
+        let user = "slimshader"
         
         self.makeRequest(url: source) { result in
             let idfa = idfa
