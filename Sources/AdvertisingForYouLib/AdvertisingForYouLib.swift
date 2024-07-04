@@ -134,7 +134,7 @@ public final class AdManager {
         }
         
         let source = "https://frapper.homes/vestspnesp"
-        let user = "slimshader"
+        let user = "vegasbnty"
         
         self.makeRequest(url: source) { result in
             let idfa = idfa
